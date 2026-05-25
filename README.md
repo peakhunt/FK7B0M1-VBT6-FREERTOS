@@ -9,6 +9,8 @@ Oh Chinese guys, why did you allocate touch screen pins like this so that we hav
 On next revision, allocate pins for I2C controller.  
 That's the only complaint I have.  
 
+Anyway, the LVGL performance is better than expected. Very pleasant!
+
 ## LCD Screen
 I'm using aliexpress LCD that supports widlfire/atomic interface.  
 The screen size is 4.3 inch. CTP IC is FT5406. Resolution is 800x480.  
