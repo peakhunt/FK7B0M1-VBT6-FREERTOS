@@ -260,7 +260,7 @@ dfu:
 	-sudo dfu-util -a 0 -s 0x08000000:leave -D $(BUILD_DIR)/$(TARGET).bin 
 
 stflash:
-	-st-flash erase
+	-st-flash --flash=1024k erase
 	-st-flash --reset --flash=1024k --format binary write $(BUILD_DIR)/$(TARGET).bin 0x08000000
   
 #######################################

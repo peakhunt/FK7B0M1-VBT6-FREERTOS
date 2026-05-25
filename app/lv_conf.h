@@ -16,8 +16,10 @@
 
 #if LV_USE_STDLIB_MALLOC == LV_STDLIB_BUILTIN
     #define LV_MEM_POOL_EXPAND_SIZE 0
-    #define LV_MEM_SIZE          (210* 1024)  /* 210KB */
-    #define LV_MEM_ADR           (0x240CB800) 
+    //#define LV_MEM_SIZE          (210* 1024)  /* 210KB */
+    //#define LV_MEM_ADR           (0x240CB800) 
+    #define LV_MEM_SIZE          (199U* 1024U)  /* 210KB */
+    #define LV_MEM_ADR           (0x240CE400) 
     #if LV_MEM_ADR == 0
         #undef LV_MEM_POOL_INCLUDE
         #undef LV_MEM_POOL_ALLOC
@@ -49,7 +51,7 @@
  * and can't be drawn in chunks. */
 
 /** The target buffer size for simple layer chunks. */
-#define LV_DRAW_LAYER_SIMPLE_BUF_SIZE    (32 * 1024)    /**< [bytes]*/
+#define LV_DRAW_LAYER_SIMPLE_BUF_SIZE    (40 * 1024)    /**< [bytes] almost 1/20 of frame buffer */
 
 /* Limit the max allocated memory for simple and transformed layers.
  * It should be at least `LV_DRAW_LAYER_SIMPLE_BUF_SIZE` sized but if transformed layers are also used
@@ -213,10 +215,10 @@
 #define LV_FONT_MONTSERRAT_14 1
 #define LV_FONT_MONTSERRAT_16 0
 #define LV_FONT_MONTSERRAT_18 0
-#define LV_FONT_MONTSERRAT_20 0
+#define LV_FONT_MONTSERRAT_20 1
 #define LV_FONT_MONTSERRAT_22 0
-#define LV_FONT_MONTSERRAT_24 0
-#define LV_FONT_MONTSERRAT_26 0
+#define LV_FONT_MONTSERRAT_24 1
+#define LV_FONT_MONTSERRAT_26 1
 #define LV_FONT_MONTSERRAT_28 0
 #define LV_FONT_MONTSERRAT_30 0
 #define LV_FONT_MONTSERRAT_32 0
@@ -473,7 +475,38 @@
 #define LV_USE_SVG_DEBUG 0
 #define LV_USE_FFMPEG 0
 #define LV_USE_SNAPSHOT 0
-#define LV_USE_SYSMON   0
+
+#define LV_USE_SYSMON   1
+#if LV_USE_SYSMON
+    /** Get the idle percentage. E.g. uint32_t my_get_idle(void); */
+    #define LV_SYSMON_GET_IDLE lv_os_get_idle_percent
+    /** 1: Enable usage of lv_os_get_proc_idle_percent.*/
+    #define LV_SYSMON_PROC_IDLE_AVAILABLE 0
+    #if LV_SYSMON_PROC_IDLE_AVAILABLE
+        /** Get the applications idle percentage.
+         * - Requires `LV_USE_OS == LV_OS_PTHREAD` */
+        #define LV_SYSMON_GET_PROC_IDLE lv_os_get_proc_idle_percent
+    #endif
+
+    /** 1: Show CPU usage and FPS count.
+     *  - Requires `LV_USE_SYSMON = 1` */
+    #define LV_USE_PERF_MONITOR 1
+    #if LV_USE_PERF_MONITOR
+        #define LV_USE_PERF_MONITOR_POS LV_ALIGN_BOTTOM_RIGHT
+
+        /** 0: Displays performance data on the screen; 1: Prints performance data using log. */
+        #define LV_USE_PERF_MONITOR_LOG_MODE 0
+    #endif
+
+    /** 1: Show used memory and memory fragmentation.
+     *     - Requires `LV_USE_STDLIB_MALLOC = LV_STDLIB_BUILTIN`
+     *     - Requires `LV_USE_SYSMON = 1`*/
+    #define LV_USE_MEM_MONITOR 0
+    #if LV_USE_MEM_MONITOR
+        #define LV_USE_MEM_MONITOR_POS LV_ALIGN_BOTTOM_LEFT
+    #endif
+#endif /*LV_USE_SYSMON*/
+
 #define LV_USE_PROFILER 0
 #define LV_USE_MONKEY 0
 #define LV_USE_GRIDNAV 0
@@ -533,7 +566,7 @@
     #define LV_USE_DEMO_KEYPAD_AND_ENCODER 0
 
     /** Benchmark your system */
-    #define LV_USE_DEMO_BENCHMARK 0
+    #define LV_USE_DEMO_BENCHMARK 1
 
     #if LV_USE_DEMO_BENCHMARK
         /** Use fonts where bitmaps are aligned 16 byte and has Nx16 byte stride */
@@ -548,7 +581,7 @@
     #define LV_USE_DEMO_STRESS 0
 
     /** Music player demo */
-    #define LV_USE_DEMO_MUSIC 0
+    #define LV_USE_DEMO_MUSIC 1
     #if LV_USE_DEMO_MUSIC
         #define LV_DEMO_MUSIC_SQUARE    0
         #define LV_DEMO_MUSIC_LANDSCAPE 0

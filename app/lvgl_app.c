@@ -9,14 +9,19 @@
 
 #include "lvgl.h"
 #include "src/drivers/display/st_ltdc/lv_st_ltdc.h"
-#include "demos/widgets/lv_demo_widgets.h" 
+
+#include "demos/music/lv_demo_music.h"
+#include "demos/widgets/lv_demo_widgets.h"
+#include "demos/benchmark/lv_demo_benchmark.h"
+
+
 #include "ft5406.h"
 
-#define LTDC_FRAME_BUF_ADDR    0x24000000  // Size: 750 KB (768,000 bytes)
-#define LVGL_PARTIAL_BUF_ADDR  0x240BB800  // Size: 64 KB  (65,536 bytes)
-#define LVGL_HEAP_ADDR         0x240CB800  // Size: 210 KB (215,040 bytes)
+#define LTDC_FRAME_BUF_ADDR    0x24000000  // Size: 750 KB 
+#define LVGL_PARTIAL_BUF_ADDR  0x240BB800  // Size: 75 KB. 1/10 of frame buffer
+#define LVGL_HEAP_ADDR         0x240CE400  // Size: 199 KB
 
-#define LVGL_PARTIAL_BUF_SIZE   (64U * 1024U)
+#define LVGL_PARTIAL_BUF_SIZE   (75U * 1024U)
 extern LTDC_HandleTypeDef hltdc;
 //extern DMA2D_HandleTypeDef hdma2d;
 
@@ -92,7 +97,9 @@ lvgl_task(void* arg)
     lv_timer_set_period(read_timer, 17);
   }
 
-  lv_demo_widgets();
+  //lv_demo_music()
+  //lv_demo_widgets();
+  lv_demo_benchmark();
 
   while(true)
   {
