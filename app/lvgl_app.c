@@ -98,8 +98,8 @@ lvgl_task(void* arg)
   }
 
   //lv_demo_music()
-  //lv_demo_widgets();
-  lv_demo_benchmark();
+  lv_demo_widgets();
+  //lv_demo_benchmark();
 
   while(true)
   {
