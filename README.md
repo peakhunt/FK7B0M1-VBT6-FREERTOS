@@ -5,6 +5,9 @@ Yes the board.
 <img src="doc/board.jpg" width="300" alt="The Chinese board">
 
 ## Features
+Oh Chinese guys, why did you allocate touch screen pins like this so that we have to use bitbanging?  
+On next revision, allocate pins for I2C controller.  
+That's the only complaint I have.  
 
 ## How to Build and Flash
 
