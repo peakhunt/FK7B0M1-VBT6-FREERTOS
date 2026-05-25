@@ -13,7 +13,7 @@ That's the only complaint I have.
 I'm using aliexpress LCD that supports widlfire/atomic interface.  
 The screen size is 4.3 inch. CTP IC is FT5406. Resolution is 800x480.  
 It's much cheaper than the aliexpress AT something panels that supports the chinese STM32 LCD inteface.  
-No way I'm paying freaking $40 or $50 just for the compatible lcd intefrace.
+No way I'm paying freaking $40 or $50 just for the compatible lcd intefrace.  
 So a LCD adapter board was created with KiCad. It's cheap to order from JLCPCB and  
 easy to solder if you have some skills and soldering equipments.  
 
