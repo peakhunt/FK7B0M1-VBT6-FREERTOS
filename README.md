@@ -2,6 +2,8 @@
 
 Yes the board.
 
+<img src="doc/board.jpg" width="300" alt="The Chinese board">
+
 ## Features
 
 ## How to Build and Flash
