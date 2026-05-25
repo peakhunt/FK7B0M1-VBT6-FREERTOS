@@ -2,7 +2,7 @@
 
 Yes the board.
 
-<img src="doc/board.jpg" width="300" alt="The Chinese board">
+<img src="doc/board.jpg" width="600" height="400" alt="The Chinese board">
 
 ## Features
 Oh Chinese guys, why did you allocate touch screen pins like this so that we have to use bit banging?  
@@ -17,7 +17,7 @@ No way I'm paying freaking $40 or $50 just for the compatible lcd intefrace.
 So a LCD adapter board was created with KiCad. It's cheap to order from JLCPCB and  
 easy to solder if you have some skills and soldering equipments.  
 
-<img src="doc/adapter.jpg" width="300" alt="Wildfire lcd adapter">
+<img src="doc/adapter.jpg" width="300" height="300" alt="Wildfire lcd adapter">
 
 There is another adapter board that supports LCD blacklight power directly but work is in progress and parts are still on the way from aliexpress.  
 
